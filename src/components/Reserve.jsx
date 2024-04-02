@@ -1,6 +1,6 @@
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
-
+// import { Jwt } from "jsonwebtoken";
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import DatePicker from "react-datepicker"
@@ -18,12 +18,16 @@ export default function Reserve({ show, handleClose }) {
     const [roomType, setRoomType] = useState("");
 
 
+
+
     const handleDateIn = (date) => {
         setDateIn(date);
+        console.log('Date In:', date);
     }
 
     const handleDateOut = (date) => {
         setDateOut(date);
+        console.log('Date Out:', date);
     }
 
 
@@ -31,16 +35,39 @@ export default function Reserve({ show, handleClose }) {
 
 
     const handleReserve = () => {
+        console.log('Reserve button clicked');
+        console.log('Date In String:', dateIn.toISOString().slice(0, 10));
+        console.log('Date Out String:', dateOut.toISOString().slice(0, 10));
 
 
         //Get stored JWT Token
         const token = localStorage.getItem("authToken");
+        console.log(token)
+
 
         //Decode the token to fetch user id
         const decode = jwtDecode(token);
-        const userId = decode.id // May change depending on how the server encode the token
+        console.log("decode :", decode);
+        const userId = decode['id'];
+        console.log("userid :", userId);
+        console.log("userid3 :", decode['id']);
+        console.log("userid4 :", decode.username);
+        console.log("userid5 :", decode['username']);
+        console.log("userid6 :", decode.password);
+        console.log("userid7 :", decode['password']);
 
 
+        // May change depending on how the server encode the token
+        // if (typeof decode.id === 'number') {
+        //     console.log('User ID:', decode.id);
+        //     // Proceed with further operations
+        // } else {
+        //     console.error('User ID is not a number');
+        //     // Handle the situation where the user ID is not of the expected type
+        // }
+
+        const dateInString = dateIn.toISOString().slice(0, 10);
+        const dateOutString = dateOut.toISOString().slice(0, 10);
 
         //Prepare data to be sent
 
@@ -50,8 +77,8 @@ export default function Reserve({ show, handleClose }) {
             selected_room: roomType,
             guest_name: name,
             phone_number: phoneNo,
-            check_in: dateIn,
-            check_out: dateOut
+            check_in: dateInString,
+            check_out: dateOutString
 
         };
 
@@ -61,6 +88,8 @@ export default function Reserve({ show, handleClose }) {
             .then((response) => {
                 console.log("Success:", response.data);
                 handleClose();
+                window.alert("You have successfully made a reservations!");
+
             })
             .catch((error) => {
                 console.error("Error", error);

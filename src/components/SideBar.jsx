@@ -9,7 +9,7 @@ export default function SideBar({ handleLogout }) {
     const navigate = useNavigate();
 
     const handleReservations = () => {
-        navigate("/reservations")
+        navigate("/reservationsPage")
     }
 
     const handleRooms = () => {
@@ -28,6 +28,7 @@ export default function SideBar({ handleLogout }) {
                 className="bi bi-clipboard2"
                 text="Reservations"
                 onClick={handleReservations}
+
             />
             <IconButton
                 className="bi bi-building-fill"

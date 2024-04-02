@@ -29,6 +29,7 @@ export default function AuthPage() {
         try {
             const res = await axios.post(`${url}/signup`, { username, password });
             console.log(res.data);
+            window.alert("You have successfully signed up as a user!");
         } catch (error) {
             console.error(error);
         }

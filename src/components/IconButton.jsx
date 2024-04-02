@@ -16,7 +16,7 @@ export default function IconButton({ isTop, className, onClick, text }) {
         <Button variant={margin} onClick={onClick}>
             <i
                 className={className + iconMargin}
-                style={{ fontSize: "24px", color: "black" }}
+                style={{ fontSize: "15px", color: "black" }}
             ></i>
             {text}
         </Button>
