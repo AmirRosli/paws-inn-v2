@@ -1,9 +1,13 @@
+import SideBar from "../components/SideBar";
+
 export default function ProfilePage() {
+
     return (
+        <>
 
-        <p>profile amir
-            <h1>profile amir2</h1>
-        </p>
+            <SideBar />
+            <p>hello</p>
 
-    )
+        </>
+    );
 }

@@ -1,10 +1,6 @@
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import useLocalStorage from "use-local-storage";
 import SideBar from "../components/SideBar";
-// import ReservedCard from "../components/ReservedCard";
-// import { jwtDecode } from "jwt-decode";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
