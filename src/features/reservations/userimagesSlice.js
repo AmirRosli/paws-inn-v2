@@ -3,7 +3,7 @@ import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
 import { db, storage } from "../../firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage"
 
-//Async thunk for fetching a user's reservations
+//Async thunk for fetching a user's profile image
 //fwefwdscscsc
 export const fetchUserimagesByUser = createAsyncThunk(
     "userimages/fetchByUser",
