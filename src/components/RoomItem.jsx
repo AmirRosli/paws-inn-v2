@@ -1,116 +1,75 @@
-
 import { Col, Container, Row } from "react-bootstrap";
-import Reserve from "./Reserve";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import room1 from "../assets/room1.jpg";
+import room2 from "../assets/room2.jpg";
+import room3 from "../assets/room3.jpg";
+import Banner from "./Banner";
 
 
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+
+
 
 export default function RoomItem() {
-    const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+
+    const navigate = useNavigate();
+
+
+    const handleReserve1 = () => {
+        navigate("/reserveeconomy")
+    }
+
+    const handleReserve2 = () => {
+        navigate("/reservecomfy")
+    }
+
+    const handleReserve3 = () => {
+        navigate("/reservesuite")
+    }
 
     return (
-        <Container className="py-3">
-            <Row className="row-cols-1 row-cols-md-3 mb-3 text-center">
-                <Col>
-                    <Card sx={{ maxWidth: 345 }}>
-                        <CardMedia
-                            sx={{ height: 140 }}
-                            image="/static/images/cards/contemplative-reptile.jpg"
-                            title="green iguana"
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                Economy
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                <ul className="mt-3 mb-4">
-                                    <li>For 1 cat</li>
-                                    <li>2x Feeding time</li>
-                                    <li>24-hour air conditioning</li>
-                                    <li>Litter and pet bowls are provided</li>
-                                </ul>
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button className="btn btn-warning" onClick={handleShow}>
-                                Reserve Now!
-                            </Button>
-                            <Reserve show={show} handleClose={handleClose} />
-                        </CardActions>
-                    </Card>
-                </Col>
-                <Col>
-                    <Card sx={{ maxWidth: 345 }}>
-                        <CardMedia
-                            sx={{ height: 140 }}
-                            image="/static/images/cards/contemplative-reptile.jpg"
-                            title="green iguana"
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                Comfy
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                <ul className="mt-3 mb-4">
-                                    <li>Suitable and can fit up to 3 adult cats</li>
-                                    <li>Add RM25 for additional cat</li>
-                                    <li>2x Feeding time</li>
-                                    <li>1x Playtime in 2 days</li>
-                                    <li>Litter and pet bowls are provided</li>
-                                    <li>24-hour air conditioning</li>
-                                </ul>
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button className="btn btn-warning" onClick={handleShow}>
-                                Reserve Now!
-                            </Button>
-                            <Reserve show={show} handleClose={handleClose} />
-                        </CardActions>
-                    </Card>
-                </Col>
-                <Col>
-                    <Card sx={{ maxWidth: 345 }}>
-                        <CardMedia
-                            sx={{ height: 140 }}
-                            image="/static/images/cards/contemplative-reptile.jpg"
-                            title="green iguana"
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                Suite
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                <ul className="mt-3 mb-4">
-                                    <li>Suitable and can fit up to 2-4 adult cats</li>
-                                    <li>Add RM35 for additional cat</li>
-                                    <li>2x Feeding time</li>
-                                    <li>2x Playtime in 2 days</li>
-                                    <li>Litter and pet bowls are provided</li>
-                                    <li>24-hour air conditioning</li>
-                                    <li>Live on phone monitoring available</li>
-                                </ul>
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button className="btn btn-warning" onClick={handleShow}>
-                                Reserve Now!
-                            </Button>
-                            <Reserve show={show} handleClose={handleClose} />
-                        </CardActions>
-                    </Card>
-                </Col>
-            </Row>
-        </Container>
+        <div className='roomItem'>
+            <Banner />
+            <div className='roomItem_section'>
+                <Container className="py-3">
+
+                    <Row className="row-cols-1 row-cols-md-3 mb-3 text-left">
+                        <Col>
+                            <div className='card' onClick={handleReserve1}>
+                                <img src={room1} alt="" />
+                                <div className="card__info">
+                                    <h2>ECONOMY</h2>
+                                    <h4>Only for 1 cat </h4>
+                                    <h3>RM25/night</h3>
+                                </div>
+                            </div>
+                        </Col>
+                        <Col>
+                            <div className='card' onClick={handleReserve2}>
+                                <img src={room2} alt="" />
+                                <div className="card__info">
+                                    <h2>COMFY</h2>
+                                    <h4>For 2-3 cats</h4>
+                                    <h3>RM55/night</h3>
+                                </div>
+                            </div>
+                        </Col>
+                        <Col>
+                            <div className='card' onClick={handleReserve3}>
+                                <img src={room3} alt="" />
+                                <div className="card__info">
+                                    <h2>SUITE</h2>
+                                    <h4>For 3-4 cats</h4>
+                                    <h3>RM75/night</h3>
+                                </div>
+                            </div>
+                        </Col>
+                    </Row>
+
+                </Container>
+            </div>
+        </div >
+
     )
 }
 

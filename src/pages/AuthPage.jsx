@@ -1,13 +1,11 @@
-// import axios from "axios";
 import {
     createUserWithEmailAndPassword,
     getAuth,
     signInWithEmailAndPassword,
 } from "firebase/auth"
-import { useEffect, useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { Button, Col, Form, Image, Modal, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-// import useLocalStorage from "use-local-storage";
 import { AuthContext } from "../components/AuthProvider";
 
 export default function AuthPage() {
@@ -23,14 +21,10 @@ export default function AuthPage() {
     const auth = getAuth();
     const { currentUser } = useContext(AuthContext);
 
-    // const [authToken, setAuthToken] = useLocalStorage("authToken", "");
+
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (currentUser) {
-            navigate("/rooms");
-        }
-    }, [currentUser, navigate]);
+
 
     const handleSignUp = async (e) => {
         e.preventDefault();
@@ -41,6 +35,8 @@ export default function AuthPage() {
                 password
             );
             console.log(res.user);
+            handleClose();
+            window.alert("You have successfully signed up as a user!");
         } catch (error) {
             console.error(error);
         }
@@ -49,11 +45,20 @@ export default function AuthPage() {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            await signInWithEmailAndPassword(auth, username, password);
+            const userCredential = await signInWithEmailAndPassword(auth, username, password);
+            const uid = userCredential.user.uid;
+
+            // Store the UID as a token in local storage
+            localStorage.setItem('token', uid);
+
+            if (currentUser) {
+                navigate("/rooms");
+            }
         } catch (error) {
             console.error(error);
         }
     };
+
 
     const handleClose = () => setModalShow(null);
     return (

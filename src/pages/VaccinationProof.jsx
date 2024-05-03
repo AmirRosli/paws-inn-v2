@@ -3,14 +3,15 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import SideBar from "../components/SideBar";
-import RoomItem from "../components/RoomItem";
+
 import { AuthContext } from "../components/AuthProvider";
+import VaccinantionItem from "../components/VaccinantionItem";
 
 
 
 
 
-export default function RoomSelection() {
+export default function VaccinationProof() {
     const auth = getAuth();
     const navigate = useNavigate();
     const { currentUser } = useContext(AuthContext);
@@ -25,13 +26,14 @@ export default function RoomSelection() {
     };
 
 
+
     return (
         <>
             <SideBar handleLogout={handleLogout} />
             <Col>
                 <Row>
                     <Container>
-                        <RoomItem />
+                        <VaccinantionItem />
                     </Container>
                 </Row>
             </Col>
