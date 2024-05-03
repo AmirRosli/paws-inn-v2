@@ -7,9 +7,11 @@ import { useState, useContext } from "react";
 import { Button, Col, Form, Image, Modal, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../components/AuthProvider";
+import pawsinnhomepage from "../assets/pawsinnhomepage.png";
+
 
 export default function AuthPage() {
-    const loginImage = "https://i.im.ge/2024/03/28/WdLYPJ.pawsinnhomepage1.png";
+    // const loginImage = url("./assets/bimage2.jpg");
     // const url = "https://a86e4163-1534-4571-9ce4-f6d2b231320e-00-elrlyh4fb5uj.janeway.replit.dev";
 
     // Possible values: null(no modal shows), "Login", "SignUp"
@@ -64,7 +66,7 @@ export default function AuthPage() {
     return (
         <Row>
             <Col sm={6}>
-                <Image src={loginImage} fluid />
+                <Image src={pawsinnhomepage} fluid />
             </Col>
             <Col sm={6} className="p-4">
                 <i className="" style={{ fontSize: 50, color: "dodgerblue" }}></i>
