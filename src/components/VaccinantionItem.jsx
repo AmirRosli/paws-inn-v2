@@ -1,6 +1,6 @@
 import { Col, Container, Row } from "react-bootstrap";
 
-import Banner from "./Banner";
+
 import VaccinationModal from "./VaccinantionModal";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "./AuthProvider";
@@ -11,7 +11,7 @@ import { AuthContext } from "./AuthProvider";
 
 export default function VaccinantionItem() {
 
-    const url = "https://eea21eef-cffb-483f-8dbe-dbe7123206b0-00-1vsza6zufsofs.riker.replit.dev"
+
     const { currentUser } = useContext(AuthContext);
 
 
